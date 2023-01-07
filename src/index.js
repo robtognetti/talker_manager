@@ -51,6 +51,7 @@ app.post('/talker', checkToken, checkName, checkAge, checkTalk, (req, res) => {
     const newTalk = { id: allTalkers.length + 1, name, age, talk };
     allTalkers.push(newTalk);
     fs.writeFileSync(pathOfTalker, JSON.stringify(allTalkers));
+    
     res.status(201).json(newTalk);
   });
 
