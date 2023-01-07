@@ -51,7 +51,7 @@ app.post('/talker', checkToken, checkName, checkAge, checkTalk, (req, res) => {
     const newTalk = { id: allTalkers.length + 1, name, age, talk };
     allTalkers.push(newTalk);
     fs.writeFileSync(pathOfTalker, JSON.stringify(allTalkers));
-    
+
     res.status(201).json(newTalk);
   });
 
@@ -63,7 +63,8 @@ app.put('/talker/:id', checkToken, checkName, checkAge, checkTalk, (req, res) =>
     updatedTalkers.push(upInfo);
     fs.writeFileSync(pathOfTalker, JSON.stringify(updatedTalkers));
     updatedTalkers.filter((event) => event.id !== checkId);
-     res.status(200).json(upInfo);
+    
+     res.status(200).json(upInfo);     
   });
 // monitoria daniele //
   app.delete('/talker/:id', checkToken, (req, res) => {
